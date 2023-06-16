@@ -1,0 +1,92 @@
+.wholeApp {
+  width: 100%;
+  min-height:100vh;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+ul {
+  list-style-type: none;
+  display: flex;
+  column-gap: 10px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.navBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0 40px;
+}
+
+.navLinks {
+  padding-right: 160px;
+}
+
+.mainSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.booksHolder {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+.SinglebookArrange {
+  display: flex;
+  justify-content: space-between;
+  border: 2px solid rgba(155, 154, 154, 0.719);
+  border-radius: 5px;
+  background-color: rgba(196, 196, 196, 0.26);
+  padding: 10px 5px;
+}
+
+.progress {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.perDisplay {
+  border: 5px solid royalblue;
+  border-left: 5px solid rgb(170, 170, 170);
+  border-radius: 50%;
+  transform: rotate(25deg);
+  width: 70px;
+  height: 70px;
+}
+
+.percentagesData {
+  display: flex;
+  flex-direction: column;
+  margin-left: 15px;
+}
+
+.otherImfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 20px;
+}
+
+.formSection {
+  width: 90%;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+form {
+  display: flex;
+}
