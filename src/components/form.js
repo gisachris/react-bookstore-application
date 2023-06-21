@@ -1,27 +1,53 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { add } from '../redux/books/bookSlice';
 import '../styles/general.css';
-// import PropTypes from 'prop-types';
 
-const FormSection = (/* { books, setBooks } */) => (
-  <section className="formSection">
-    <span>ADD NEW BOOK</span>
-    <form>
-      <input type="text" required placeholder="enter a new book" />
-      <input type="text" required placeholder="enter the author" />
-      <button type="button">ADD BUTTON</button>
-    </form>
-  </section>
-);
+const FormSection = () => {
+  const [title, SetTitle] = useState('');
+  const [author, setAuthor] = useState('');
+  const allBooks = useSelector((state) => state.books);
+  const bookLength = allBooks.length;
 
-// FormSection.propTypes = {
-//   books: PropTypes.arrayOf(
-//     PropTypes.shape({
-//       id: PropTypes.number.isRequired,
-//       title: PropTypes.string.isRequired,
-//       author: PropTypes.string.isRequired,
-//     }),
-//   ).isRequired,
-//   setBooks: PropTypes.func.isRequired,
-// };
+  const handleTitleChange = (event) => {
+    SetTitle(event.target.value);
+  };
+
+  const handleAuthorChange = (event) => {
+    setAuthor(event.target.value);
+  };
+
+  const handleAfterClick = () => {
+    setAuthor('');
+    SetTitle('');
+  };
+
+  const dispatch = useDispatch();
+  return (
+    <section className="formSection">
+      <span>ADD NEW BOOK</span>
+      <form>
+        <input type="text" required placeholder="enter a new book" value={title} onChange={handleTitleChange} />
+        <input type="text" required placeholder="enter the author" value={author} onChange={handleAuthorChange} />
+        <button
+          type="button"
+          onClick={() => {
+            const madeBook = {
+              item_id: `item${bookLength + 1}`,
+              title,
+              author,
+              category: 'fiction',
+            };
+
+            dispatch(add(madeBook));
+            handleAfterClick();
+          }}
+        >
+          ADD BUTTON
+        </button>
+      </form>
+    </section>
+  );
+};
 
 export default FormSection;
