@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { add } from '../redux/books/bookSlice';
+import { fetchData, addBooks } from '../redux/books/bookSlice';
 import '../styles/general.css';
 
 const FormSection = () => {
   const [title, SetTitle] = useState('');
   const [author, setAuthor] = useState('');
-  const allBooks = useSelector((state) => state.books);
+  const [emptyFields, setEmptyFields] = useState(false);
+  const [errorMssg, seterrorMssg] = useState('');
+  const allBooks = useSelector((state) => state.books.books);
   const bookLength = allBooks.length;
 
   const handleTitleChange = (event) => {
@@ -23,6 +25,26 @@ const FormSection = () => {
   };
 
   const dispatch = useDispatch();
+
+  const handleAddClick = async (newBook) => {
+    if (title === '' || author === '') {
+      setEmptyFields(true);
+      return;
+    }
+
+    const updatedBook = { ...newBook, item_id: bookLength }; // Add item_id to the book object
+
+    try {
+      await dispatch(addBooks(updatedBook)).unwrap();
+      dispatch(fetchData()); // Fetch updated data
+      setAuthor('');
+      SetTitle('');
+      setEmptyFields(false);
+    } catch (error) {
+      seterrorMssg(error.message);
+    }
+  };
+
   return (
     <section className="formSection">
       <span>ADD NEW BOOK</span>
@@ -33,19 +55,20 @@ const FormSection = () => {
           type="button"
           onClick={() => {
             const madeBook = {
-              item_id: `item${bookLength + 1}`,
+              item_id: bookLength,
               title,
               author,
               category: 'fiction',
             };
-
-            dispatch(add(madeBook));
+            handleAddClick(madeBook);
             handleAfterClick();
           }}
         >
           ADD BUTTON
         </button>
       </form>
+      {emptyFields && <span>please fill in all the fields!</span>}
+      {errorMssg && <span>an error occured!</span>}
     </section>
   );
 };
