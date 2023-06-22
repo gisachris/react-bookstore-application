@@ -5,6 +5,7 @@ import { fetchData, deleteBooks } from '../redux/books/bookSlice';
 
 const Book = () => {
   const allBooks = useSelector((state) => state.books.books);
+  const loadingState = useSelector((state) => state.books.loading);
 
   const dispatch = useDispatch();
 
@@ -31,6 +32,12 @@ const Book = () => {
       <div>
         <h1>No books have been added yet!</h1>
       </div>
+    );
+  }
+
+  if (loadingState) {
+    return (
+      <div>loading...</div>
     );
   }
 
