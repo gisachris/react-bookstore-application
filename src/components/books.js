@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import '../styles/general.css';
 import '../styles/bookInstance.css';
+import '../styles/loading.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchData, deleteBooks } from '../redux/books/bookSlice';
 import OtherInfoSection from './bookSupport';
@@ -40,7 +41,14 @@ const Book = () => {
 
   if (loadingState) {
     return (
-      <div className="loadingState">loading...</div>
+      <section className="loadingState">
+        <div className="lds-ring">
+          <div />
+          <div />
+          <div />
+          <div />
+        </div>
+      </section>
     );
   }
 
