@@ -41,7 +41,6 @@ const FormSection = () => {
       setAuthor('');
       SetTitle('');
       setEmptyFields(false);
-      console.log(allBooks);
     } catch (error) {
       seterrorMssg(error.message);
     }

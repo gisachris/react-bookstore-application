@@ -23,7 +23,6 @@ const Book = () => {
 
   const handleButtonClick = (itemID) => {
     handleDeleteClick(itemID);
-    console.log(allBooks);
   };
 
   useEffect(() => {
