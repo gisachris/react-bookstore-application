@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
 import '../styles/general.css';
+import '../styles/bookInstance.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchData, deleteBooks } from '../redux/books/bookSlice';
+import OtherInfoSection from './bookSupport';
 
 const Book = () => {
   const allBooks = useSelector((state) => state.books.books);
@@ -20,6 +22,7 @@ const Book = () => {
 
   const handleButtonClick = (itemID) => {
     handleDeleteClick(itemID);
+    console.log(allBooks);
   };
 
   useEffect(() => {
@@ -29,7 +32,7 @@ const Book = () => {
 
   if (allBooks.length === 0) {
     return (
-      <div>
+      <div className="noBooks-Message">
         <h1>No books have been added yet!</h1>
       </div>
     );
@@ -37,7 +40,7 @@ const Book = () => {
 
   if (loadingState) {
     return (
-      <div>loading...</div>
+      <div className="loadingState">loading...</div>
     );
   }
 
@@ -53,18 +56,7 @@ const Book = () => {
             <button type="submit" data-index={book.item_id} onClick={() => handleButtonClick(book.item_id)}>Remove</button>
             <button type="submit">Edit</button>
           </section>
-          <section className="progress">
-            <div className="perDisplay" />
-            <article className="percentagesData">
-              <span>20%</span>
-              <span>Complete</span>
-            </article>
-          </section>
-          <section className="otherImfo">
-            <span>CHAPTER 16</span>
-            <span>The Chapter</span>
-            <button type="submit">UPDATE PROGRESS</button>
-          </section>
+          <OtherInfoSection book={book} />
         </div>
       ))}
     </section>

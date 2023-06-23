@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchData, addBooks } from '../redux/books/bookSlice';
 import '../styles/general.css';
+import '../styles/form.css';
 
 const FormSection = () => {
   const [title, SetTitle] = useState('');
@@ -40,36 +41,40 @@ const FormSection = () => {
       setAuthor('');
       SetTitle('');
       setEmptyFields(false);
+      console.log(allBooks);
     } catch (error) {
       seterrorMssg(error.message);
     }
   };
 
   return (
-    <section className="formSection">
-      <span>ADD NEW BOOK</span>
-      <form>
-        <input type="text" required placeholder="enter a new book" value={title} onChange={handleTitleChange} />
-        <input type="text" required placeholder="enter the author" value={author} onChange={handleAuthorChange} />
-        <button
-          type="button"
-          onClick={() => {
-            const madeBook = {
-              item_id: bookLength,
-              title,
-              author,
-              category: 'fiction',
-            };
-            handleAddClick(madeBook);
-            handleAfterClick();
-          }}
-        >
-          ADD BUTTON
-        </button>
-      </form>
-      {emptyFields && <span>please fill in all the fields!</span>}
-      {errorMssg && <span>an error occured!</span>}
-    </section>
+    <>
+      <div className="separatorHorizontal" />
+      <section className="formSection">
+        <span className="formHeader">ADD NEW BOOK</span>
+        <form>
+          <input type="text" required placeholder="enter a new book" value={title} onChange={handleTitleChange} />
+          <input type="text" required placeholder="enter the author" value={author} onChange={handleAuthorChange} />
+          <button
+            type="button"
+            onClick={() => {
+              const madeBook = {
+                item_id: bookLength,
+                title,
+                author,
+                category: 'fiction',
+              };
+              handleAddClick(madeBook);
+              handleAfterClick();
+            }}
+          >
+            ADD BUTTON
+          </button>
+        </form>
+        {emptyFields && <span>please fill in all the fields!</span>}
+        {errorMssg && <span>an error occured!</span>}
+      </section>
+    </>
   );
 };
 
