@@ -59,7 +59,7 @@
   color: #4386bf;
   background-color: transparent;
   border: 0;
-  border-right: 3px solid #e8e8e8 !important;
+  border-right: 3px solid #e8e8e8;
   cursor: pointer;
   padding-left: 8px;
   padding-right: 5px;
@@ -84,11 +84,11 @@
 }
 
 .bookImfo button:nth-of-type(1) {
-  padding-left: 0 !important;
+  padding-left: 0;
 }
 
 .bookImfo button:nth-of-type(3) {
-  border-right: 0 !important;
+  border-right: 0;
 }
 
 .percentagesData .per {
