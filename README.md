@@ -4,8 +4,6 @@
   - [🛠 Built With](#built-with)
     - [Tech Stack](#tech-stack)
     - [Key Features](#key-features)
-  - [🚀 Live Demo](#live-demo)
-  - [👩‍💻 Presentation](#Presentation)
 - [💻 Getting Started](#getting-started)
   - [Setup](#setup)
   - [Prerequisites](#prerequisites)
@@ -67,18 +65,6 @@ Redux toolkit
 - **clean UI design**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-## 🚀 Live Demo <a name="live-demo"></a>
-There is no live demo ink at this stage of the project
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-## 🚀 Project Presentation <a name="Presentation"></a>
-There is no project presentation at the moment
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 <!-- GETTING STARTED -->
 
@@ -169,7 +155,7 @@ To run tests, run the following command:
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [https://github.com/gisachris/math-magicians-app/issues](../../issues/).
+Feel free to check the https://github.com/gisachris/react-bookstore-application/issues
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
